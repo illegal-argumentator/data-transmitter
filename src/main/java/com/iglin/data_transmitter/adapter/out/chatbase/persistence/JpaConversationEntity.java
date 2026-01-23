@@ -9,9 +9,8 @@ import jakarta.persistence.Id;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.annotation.LastModifiedDate;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Data
 @Entity
@@ -25,8 +24,5 @@ public class JpaConversationEntity extends Conversation {
     private ConversationStatus conversationStatus;
 
     @CreatedDate
-    private LocalDate createdDate;
-
-    @LastModifiedDate
-    private LocalDate modifiedDate;
+    private LocalDateTime createdDate;
 }
