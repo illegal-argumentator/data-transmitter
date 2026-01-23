@@ -1,6 +1,6 @@
 package com.iglin.data_transmitter.adapter.in.chatbase;
 
-import com.iglin.data_transmitter.adapter.in.common.HttpRequestParser;
+import com.iglin.data_transmitter.adapter.in.HttpRequestParser;
 import com.iglin.data_transmitter.application.chatbase.ChatbaseService;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;

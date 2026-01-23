@@ -1,11 +1,9 @@
-package com.iglin.data_transmitter.adapter.out.chatbase;
+package com.iglin.data_transmitter.adapter.out.jpa_chatbase.persistence;
 
-import com.iglin.data_transmitter.adapter.out.chatbase.mapper.ConversationMapper;
-import com.iglin.data_transmitter.adapter.out.chatbase.persistence.JpaConversationEntity;
-import com.iglin.data_transmitter.adapter.out.chatbase.persistence.JpaConversationRepository;
+import com.iglin.data_transmitter.adapter.out.jpa_chatbase.mapper.ConversationMapper;
 import com.iglin.data_transmitter.domain.chatbase.common.type.ConversationStatus;
 import com.iglin.data_transmitter.domain.chatbase.model.Conversation;
-import com.iglin.data_transmitter.port.out.chatbase.ConversationQueryPort;
+import com.iglin.data_transmitter.port.out.ConversationQueryPort;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
@@ -24,4 +22,5 @@ public class ConversationQueryAdapter implements ConversationQueryPort {
         List<JpaConversationEntity> jpaConversationEntities = jpaConversationRepository.findAllByConversationStatus(conversationStatus);
         return conversationMapper.toConversations(jpaConversationEntities);
     }
+
 }

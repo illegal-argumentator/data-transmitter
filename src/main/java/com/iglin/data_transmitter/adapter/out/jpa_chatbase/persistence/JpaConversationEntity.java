@@ -1,4 +1,4 @@
-package com.iglin.data_transmitter.adapter.out.chatbase.persistence;
+package com.iglin.data_transmitter.adapter.out.jpa_chatbase.persistence;
 
 import com.iglin.data_transmitter.domain.chatbase.common.type.ConversationStatus;
 import com.iglin.data_transmitter.domain.chatbase.model.Conversation;

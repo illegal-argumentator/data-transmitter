@@ -1,4 +1,4 @@
-package com.iglin.data_transmitter.port.out.chatbase;
+package com.iglin.data_transmitter.port.out;
 
 import com.iglin.data_transmitter.domain.chatbase.model.Conversation;
 

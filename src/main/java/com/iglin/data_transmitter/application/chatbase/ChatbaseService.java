@@ -1,7 +1,7 @@
 package com.iglin.data_transmitter.application.chatbase;
 
 import com.iglin.data_transmitter.domain.chatbase.model.Conversation;
-import com.iglin.data_transmitter.port.out.chatbase.ConversationCommandPort;
+import com.iglin.data_transmitter.port.out.ConversationCommandPort;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;

@@ -1,4 +1,4 @@
-package com.iglin.data_transmitter.adapter.in.common;
+package com.iglin.data_transmitter.adapter.in;
 
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.extern.slf4j.Slf4j;
