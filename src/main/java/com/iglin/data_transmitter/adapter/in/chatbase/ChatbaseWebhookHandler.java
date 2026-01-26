@@ -4,8 +4,10 @@ import com.iglin.data_transmitter.adapter.in.HttpRequestParser;
 import com.iglin.data_transmitter.application.chatbase.ChatbaseService;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
+@Slf4j
 @Component
 @RequiredArgsConstructor
 public class ChatbaseWebhookHandler {
@@ -21,8 +23,9 @@ public class ChatbaseWebhookHandler {
     public void handleFormSubmission(HttpServletRequest request, String headerSignature) {
         String rawBody = httpRequestParser.parse(request);
         String parsedSignature = chatbaseParser.parseSignature(rawBody);
-        chatbaseSignatureValidator.validate(parsedSignature, headerSignature);
-        chatbaseService.save(chatbaseParser.parseConversation(rawBody));
+        log.info("Rawbody: {}, signature: {}", rawBody, parsedSignature);
+//        chatbaseSignatureValidator.validate(parsedSignature, headerSignature);
+//        chatbaseService.save(chatbaseParser.parseConversation(rawBody));
     }
 
 }
