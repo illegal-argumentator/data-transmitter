@@ -6,7 +6,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDateTime;
+import java.time.Duration;
 import java.util.List;
 
 @Service
@@ -26,12 +26,11 @@ public class ChatbaseService {
         conversationCommandPort.update(id, conversation);
     }
 
-    public List<Conversation> filterReadyForTransitConversations(List<Conversation> conversations) {
-        LocalDateTime minus = LocalDateTime.now().minusSeconds(CONVERSATION_TRANSITION);
+    public List<Conversation> filterReadyForTransitionConversations(List<Conversation> conversations) {
+        Duration transition = Duration.ofSeconds(CONVERSATION_TRANSITION);
 
         return conversations.stream()
-                .filter(conversation -> conversation.getCreatedDate().isEqual(minus)
-                        || conversation.getCreatedDate().isBefore(minus))
+                .filter(c -> c.isReadyForTransition(transition))
                 .toList();
     }
 }
