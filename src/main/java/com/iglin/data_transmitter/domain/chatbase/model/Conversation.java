@@ -1,16 +1,25 @@
 package com.iglin.data_transmitter.domain.chatbase.model;
 
+import com.iglin.data_transmitter.domain.chatbase.common.type.ConversationStatus;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.experimental.SuperBuilder;
 
 import java.time.Duration;
 import java.time.LocalDateTime;
 
 @Data
-public abstract class Conversation {
+@SuperBuilder
+@NoArgsConstructor
+@AllArgsConstructor
+public class Conversation {
 
         private String eventType;
         private String chatbotId;
         private Payload payload;
+        private ConversationStatus conversationStatus;
         private LocalDateTime createdDate;
 
     @Data
@@ -20,7 +29,6 @@ public abstract class Conversation {
             private String customerEmail;
             private String customerName;
             private String customerPhone;
-
     }
 
     public boolean isReadyForTransition(Duration transition) {

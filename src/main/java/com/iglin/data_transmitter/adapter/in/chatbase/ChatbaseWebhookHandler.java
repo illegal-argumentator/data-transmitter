@@ -1,7 +1,6 @@
 package com.iglin.data_transmitter.adapter.in.chatbase;
 
 import com.iglin.data_transmitter.adapter.in.HttpRequestParser;
-import com.iglin.data_transmitter.application.chatbase.ChatbaseService;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -11,8 +10,6 @@ import org.springframework.stereotype.Component;
 @Component
 @RequiredArgsConstructor
 public class ChatbaseWebhookHandler {
-
-    private final ChatbaseService chatbaseService;
 
     private final HttpRequestParser httpRequestParser;
 

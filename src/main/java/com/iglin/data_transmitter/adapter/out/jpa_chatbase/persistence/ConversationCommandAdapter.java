@@ -1,11 +1,14 @@
 package com.iglin.data_transmitter.adapter.out.jpa_chatbase.persistence;
 
+import com.iglin.data_transmitter.adapter.out.common.exception.EntityNotFoundException;
 import com.iglin.data_transmitter.adapter.out.jpa_chatbase.mapper.ConversationMapper;
 import com.iglin.data_transmitter.domain.chatbase.common.type.ConversationStatus;
 import com.iglin.data_transmitter.domain.chatbase.model.Conversation;
-import com.iglin.data_transmitter.port.out.ConversationCommandPort;
+import com.iglin.data_transmitter.port.out.chatbase.ConversationCommandPort;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
+
+import java.util.Optional;
 
 @Component
 @RequiredArgsConstructor
@@ -23,7 +26,12 @@ public class ConversationCommandAdapter implements ConversationCommandPort {
     }
 
     @Override
-    public void update(String id, Conversation conversation) {
+    public void updateStatus(String email, ConversationStatus conversationStatus) {
+        JpaConversationEntity entity = jpaConversationRepository
+                .findByPayload_CustomerEmail(email)
+                .orElseThrow(() -> new EntityNotFoundException("Conversation not found."));
 
+        entity.setConversationStatus(conversationStatus);
+        jpaConversationRepository.save(entity);
     }
 }

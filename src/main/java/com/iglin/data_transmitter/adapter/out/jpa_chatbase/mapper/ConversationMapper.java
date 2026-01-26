@@ -1,7 +1,7 @@
 package com.iglin.data_transmitter.adapter.out.jpa_chatbase.mapper;
 
 import com.iglin.data_transmitter.adapter.out.jpa_chatbase.persistence.JpaConversationEntity;
-import com.iglin.data_transmitter.adapter.out.common.MapStructConfig;
+import com.iglin.data_transmitter.adapter.out.common.config.MapStructConfig;
 import com.iglin.data_transmitter.domain.chatbase.model.Conversation;
 import org.mapstruct.Mapper;
 

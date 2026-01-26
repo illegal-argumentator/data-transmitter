@@ -1,4 +1,4 @@
-package com.iglin.data_transmitter.adapter.out.common;
+package com.iglin.data_transmitter.adapter.out.common.config;
 
 import org.mapstruct.InjectionStrategy;
 import org.mapstruct.MapperConfig;
