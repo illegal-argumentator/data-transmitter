@@ -1,0 +1,39 @@
+version: '3.8'
+
+networks:
+  data-transmitter-net:
+
+services:
+  app-service:
+    build:
+      context: ..
+      dockerfile: Dockerfile
+    container_name: data-transmitter
+    restart: unless-stopped
+    networks:
+      - data-transmitter-net
+    ports:
+      - "9898:9898"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/mydatabase
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: secret
+      SPRING_JPA_HIBERNATE_DDL_AUTO: update
+
+  postgres:
+    image: postgres:16
+    container_name: data-transmitter-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: data-transmitter
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: secret
+    networks:
+      - data-transmitter-net
+    ports:
+      - "9797:5432"
+    volumes:
+      - transmitter-postgres-data:/var/lib/postgresql/data
+
+volumes:
+  transmitter-postgres-data:

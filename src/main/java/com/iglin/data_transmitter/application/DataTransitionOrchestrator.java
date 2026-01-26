@@ -23,8 +23,12 @@ public class DataTransitionOrchestrator {
         List<Conversation> pendingConversations = conversationQueryPort.findAllByStatus(ConversationStatus.PENDING);
         log.info("Retrieved {} pending conversations.", pendingConversations.size());
 
+        // TODO stop if no pending conversations
+
         List<Conversation> transitionConversations = chatbaseService.filterReadyForTransitionConversations(pendingConversations);
         log.info("Filtered {} transition conversations.", transitionConversations.size());
+
+        // TODO stop if no transition conversations
 
     }
 
