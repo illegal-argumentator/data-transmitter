@@ -8,13 +8,13 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import static com.iglin.data_transmitter.adapter.in.chatbase.common.constants.ChatbaseConstants.CHATBASE_SIGNATURE_HEADER;
+
 @Slf4j
 @Controller
 @RequiredArgsConstructor
 @RequestMapping("/webhook")
 public class ChatbaseWebhookController {
-
-    private static final String CHATBASE_SIGNATURE_HEADER = "x-chatbase-signature";
 
     private final ChatbaseWebhookHandler chatbaseWebhookHandler;
 

@@ -7,6 +7,6 @@ public interface ConversationCommandPort {
 
     void save(Conversation conversation);
 
-    void updateStatus(String email, ConversationStatus conversationStatus);
+    void updateStatus(String id, ConversationStatus conversationStatus);
 
 }

@@ -16,7 +16,7 @@ public class DataTransitionScheduler {
     @Scheduled(initialDelay = 0, fixedDelay = 1000 * 60 * 60)
     public void transitData() {
         log.info("Starting data transitioning.");
-//        dataTransitionOrchestrator.processDataTransition();
+//        dataTransitionOrchestrator.transitData();
     }
 
 }

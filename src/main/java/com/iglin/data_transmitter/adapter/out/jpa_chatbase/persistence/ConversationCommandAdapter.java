@@ -8,8 +8,6 @@ import com.iglin.data_transmitter.port.out.chatbase.ConversationCommandPort;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
-import java.util.Optional;
-
 @Component
 @RequiredArgsConstructor
 public class ConversationCommandAdapter implements ConversationCommandPort {
@@ -26,9 +24,9 @@ public class ConversationCommandAdapter implements ConversationCommandPort {
     }
 
     @Override
-    public void updateStatus(String email, ConversationStatus conversationStatus) {
+    public void updateStatus(String id, ConversationStatus conversationStatus) {
         JpaConversationEntity entity = jpaConversationRepository
-                .findByPayload_CustomerEmail(email)
+                .findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("Conversation not found."));
 
         entity.setConversationStatus(conversationStatus);

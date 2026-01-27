@@ -2,7 +2,6 @@ package com.iglin.data_transmitter.domain.chatbase.model;
 
 import com.iglin.data_transmitter.domain.chatbase.common.type.ConversationStatus;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
@@ -16,6 +15,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 public class Conversation {
 
+        private String id;
         private String eventType;
         private String chatbotId;
         private Payload payload;

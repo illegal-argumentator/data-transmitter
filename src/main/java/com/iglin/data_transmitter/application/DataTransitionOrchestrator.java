@@ -28,12 +28,15 @@ public class DataTransitionOrchestrator {
         log.info("Retrieved {} pending conversations.", pendingConversations.size());
 
         List<Conversation> transitionConversations = ConversationRules.filterTransitions(conversationDelay, pendingConversations);
-        ConversationRules.throwIfEmpty(transitionConversations, "No transition-ready conversations were found.");
         log.info("Filtered {} transition conversations.", transitionConversations.size());
 
-        // TODO call chatbase to retrieve all chats and populate all data to Conversation entity
+        List<Conversation> externalConversations = dataTransitionService.retrieveExternalConversations(transitionConversations.stream()
+                .map(Conversation::getChatbotId)
+                .toList());
+        log.info("Retrieved {} external conversations.", externalConversations.size());
 
-        dataTransitionService.processDataTransition(List.of());
+        dataTransitionService.transitData(externalConversations);
+        log.info("Transition finished successfully.");
     }
 
 }

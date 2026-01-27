@@ -18,20 +18,18 @@ import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 public class LeadCommandAdapter implements LeadCommandPort {
 
     @Value("${smartmoving.provider-key}")
-    private String SMARTMOVING_PROVIDER_KEY;
+    private String PROVIDER_KEY;
 
     private final ObjectMapper objectMapper;
 
     private final OkHttpService okHttpService;
-
-    private static final String SMARTMOVING_URL = "https://api.smartmoving.com/api";
 
     @Override
     public void save(Lead lead) {
         String jsonBody = objectMapper.writeValueAsString(lead);
 
         Request request = new Request.Builder()
-                .url(SMARTMOVING_URL + "/leads/from-provider/v2?providerKey=" + SMARTMOVING_PROVIDER_KEY)
+                .url(SmartMovingApiPathBuilder.buildLeads(PROVIDER_KEY))
                 .post(RequestBody.create(jsonBody, MediaType.get(APPLICATION_JSON_VALUE)))
                 .build();
         okHttpService.handleApiRequest(request);

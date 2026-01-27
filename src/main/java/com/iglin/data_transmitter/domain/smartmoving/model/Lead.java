@@ -11,6 +11,4 @@ public class Lead {
     String email;
     String phoneNumber;
 
-    // TODO what other exact fields do we need to parse from conversation
-
 }

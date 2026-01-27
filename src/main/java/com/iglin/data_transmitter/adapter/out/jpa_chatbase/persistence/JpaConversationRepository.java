@@ -8,8 +8,6 @@ import java.util.Optional;
 
 public interface JpaConversationRepository extends JpaRepository<JpaConversationEntity, String> {
 
-    Optional<JpaConversationEntity> findByPayload_CustomerEmail(String payloadCustomerEmail);
-
     List<JpaConversationEntity> findAllByConversationStatus(ConversationStatus conversationStatus);
     
 }

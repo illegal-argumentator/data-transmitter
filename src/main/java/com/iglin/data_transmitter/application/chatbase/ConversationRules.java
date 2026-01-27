@@ -15,9 +15,13 @@ public class ConversationRules {
     }
 
     public static List<Conversation> filterTransitions(Duration delay,List<Conversation> conversations) {
-        return conversations.stream()
+        List<Conversation> transitionConversations = conversations.stream()
                 .filter(c -> c.isReadyForTransition(delay))
                 .toList();
+
+        throwIfEmpty(transitionConversations, "No transition-ready conversations were found.");
+
+        return transitionConversations;
     }
 
 }
