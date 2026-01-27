@@ -1,10 +1,10 @@
 package com.iglin.data_transmitter.adapter.in.chatbase;
 
-import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -14,14 +14,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/webhook")
 public class ChatbaseWebhookController {
 
+    private static final String CHATBASE_SIGNATURE_HEADER = "x-chatbase-signature";
+
     private final ChatbaseWebhookHandler chatbaseWebhookHandler;
 
     @PostMapping("/form-submission")
     public void handleFormSubmission(
-            HttpServletRequest request,
-            @RequestHeader("x-chatbase-signature") String signature
+            @RequestBody String body,
+            @RequestHeader(CHATBASE_SIGNATURE_HEADER) String signature
     ) {
         log.info("Received request from chatbase webhook.");
-        chatbaseWebhookHandler.handleFormSubmission(request, signature);
+        chatbaseWebhookHandler.handleFormSubmission(body, signature);
     }
 }

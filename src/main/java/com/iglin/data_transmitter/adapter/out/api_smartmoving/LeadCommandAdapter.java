@@ -24,13 +24,14 @@ public class LeadCommandAdapter implements LeadCommandPort {
 
     private final OkHttpService okHttpService;
 
+    private static final String SMARTMOVING_URL = "https://api.smartmoving.com/api";
+
     @Override
     public void save(Lead lead) {
         String jsonBody = objectMapper.writeValueAsString(lead);
 
-        // TODO refactor
         Request request = new Request.Builder()
-                .url("https://api.smartmoving.com/api/leads/from-provider/v2?providerKey=" + SMARTMOVING_PROVIDER_KEY)
+                .url(SMARTMOVING_URL + "/leads/from-provider/v2?providerKey=" + SMARTMOVING_PROVIDER_KEY)
                 .post(RequestBody.create(jsonBody, MediaType.get(APPLICATION_JSON_VALUE)))
                 .build();
         okHttpService.handleApiRequest(request);
