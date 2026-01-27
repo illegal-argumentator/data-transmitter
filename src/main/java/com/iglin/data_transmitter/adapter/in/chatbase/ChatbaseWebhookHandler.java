@@ -14,7 +14,7 @@ public class ChatbaseWebhookHandler {
     private final ChatbaseSignatureValidator chatbaseSignatureValidator;
 
     public void handleFormSubmission(String body, String headerSignature) {
-        String parsedSignature = chatbaseParser.parseSignature(body);
+        String parsedSignature = chatbaseParser.parseSignature(headerSignature);
         log.info("Rawbody: {}, signature: {}", body, parsedSignature);
 //        chatbaseSignatureValidator.validate(parsedSignature, headerSignature);
 //        chatbaseService.save(chatbaseParser.parseConversation(rawBody));
