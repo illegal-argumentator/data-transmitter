@@ -4,7 +4,7 @@ networks:
   data-transmitter-net:
 
 services:
-  app-service:
+  app-data-transmitter:
     build:
       context: ..
       dockerfile: Dockerfile
@@ -20,7 +20,7 @@ services:
       SPRING_DATASOURCE_PASSWORD: secret
       SPRING_JPA_HIBERNATE_DDL_AUTO: update
 
-  postgres:
+  postgres-data-transmitter:
     image: postgres:16
     container_name: data-transmitter-db
     restart: unless-stopped
