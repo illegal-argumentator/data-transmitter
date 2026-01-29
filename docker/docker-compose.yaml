@@ -15,7 +15,7 @@ services:
     ports:
       - "9898:9898"
     environment:
-      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/data-transmitter
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres-data-transmitter:5432/data-transmitter
       SPRING_DATASOURCE_USERNAME: postgres
       SPRING_DATASOURCE_PASSWORD: secret
       SPRING_JPA_HIBERNATE_DDL_AUTO: update
